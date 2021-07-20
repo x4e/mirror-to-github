@@ -10,7 +10,71 @@ on:
 jobs:
   mirror-main:
     runs-on: ubuntu-latest
-    name: mirror-main
+    name: ${{ matrix.remote }} to ${{ matrix.user }}/${{ matrix.repo }}
+
+    strategy:
+      matrix:
+        include:
+          - remote: https://github.com/rhboot/shim
+            user: vathpela
+            repo: mallory
+            secret: ID_RSA_SHIM
+            branches: main
+          - remote: https://github.com/tianocore/edk2
+            user: vathpela
+            repo: edk2
+            secret: ID_RSA_EDK2
+            branches: master
+          - remote: https://github.com/rhboot/efibootmgr
+            user: vathpela
+            repo: efibootmgr-devel
+            secret: ID_RSA_EFIBOOTMGR
+            branches: master
+          - remote: git://sourceware.org/git/binutils-gdb.git
+            user: vathpela
+            repo: binutils
+            secret: ID_RSA_BINUTILS
+            branches: master
+          - remote: https://github.com/tianocore/edk2
+            user: vathpela
+            repo: gcc
+            secret: ID_RSA_GCC
+            branches: master
+          - remote: https://github.com/torvalds/linux
+            user: vathpela
+            repo: linux
+            secret: ID_RSA_LINUX
+            branches: master
+          - remote: git://git.code.sf.net/p/gnu-efi/code
+            user: vathpela
+            repo: gnu-efi
+            secret: ID_RSA_GNU_EFI
+            branches: master
+          - remote: https://github.com/rpm-software-management/rpm
+            user: vathpela
+            repo: rpm
+            secret: ID_RSA_RPM
+            branches: master
+          - remote: https://github.com/rhboot/efivar
+            user: vathpela
+            repo: efivar
+            secret: ID_RSA_EFIVAR
+            branches: master
+          - remote: git://git.savannah.gnu.org/grub.git
+            user: rhboot
+            repo: grub2
+            secret: ID_RSA_GRUB2
+            branches: master
+          - remote: https://github.com/rhboot/grub2
+            user: vathpela
+            repo: grub2-fedora
+            secret: ID_RSA_GRUB2_FEDORA
+            branches: fedora-32 fedora-33 fedora-34 fedora-35 fedora-36 fedora-37 fedora-38 fedora-39 fedora-40 fedora-41 fedora-42 fedora-43 fedora-44 fedora-45 fedora-46 fedora-47 fedora-48 fedora-49 fedora-50 fedora-51 fedora-52 fedora-53 fedora-54 fedora-55 fedora-56 fedora-57 fedora-58 fedora-59 fedora-60 fedora-61 fedora-62 fedora-63 fedora-64 fedora-65 fedora-66 fedora-67 fedora-68 fedora-69 fedora-70 fedora-71 fedora-72 fedora-73 fedora-74 fedora-75 fedora-76 fedora-77 fedora-78 fedora-79 fedora-80 fedora-81 fedora-82 fedora-83 fedora-84 fedora-85 fedora-86 fedora-87 fedora-88 fedora-89 fedora-90 fedora-91 fedora-92 fedora-93 fedora-94 fedora-95 fedora-96 fedora-97 fedora-98 fedora-99 rhel-7.0 rhel-7.1 rhel-7.2 rhel-7.3 rhel-7.4 rhel-7.5 rhel-7.6 rhel-7.7 rhel-7.8 rhel-7.9 rhel-8.0 rhel-8.1 rhel-8.2 rhel-8.3 rhel-8.4 rhel-8.5 rhel-8.6 rhel-8.7 rhel-8.8 rhel-8.9 rhel-9.0 rhel-9.1 rhel-9.2 rhel-9.3 rhel-9.4 rhel-9.5 rhel-9.6 rhel-9.7 rhel-9.8 rhel-9.9 master
+          - remote: https://github.com/rhboot/pesign
+            user: vathpela
+            repo: pesign
+            secret: ID_RSA_PESIGN
+            branches: main
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -32,4 +96,4 @@ jobs:
           ID_RSA_RPM: ${{ secrets.ID_RSA_RPM }}
           ID_RSA_SHIM: ${{ secrets.ID_RSA_SHIM }}
         run: |
-          ./mirror.sh
+          ./mirror.sh ${{ matrix.remote }} ${{ matrix.user }} ${{ matrix.repo }} ${{ matrix.secret }} ${{ matrix.branches }}
