@@ -1,6 +1,8 @@
-all: mirror-to-github
+all:
 
-mirror-to-github:
-	cat /dev/null | ssh-keygen -f mirror-to-github
+id_rsa.% :
+	ssh-keygen -f $@ -N ""
+
+.ONESHELL:
 
 # vim:ft=make

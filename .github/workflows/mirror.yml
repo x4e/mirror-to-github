@@ -19,6 +19,6 @@ jobs:
           fetch-depth: 1
       - shell: bash
         env:
-          MIRROR_TO_GITHUB: ${{ secrets.MIRROR_TO_GITHUB }}
+          ID_RSA_SHIM: ${{ secrets.ID_RSA_SHIM }}
         run: |
           ./mirror.sh
