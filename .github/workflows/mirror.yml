@@ -19,6 +19,17 @@ jobs:
           fetch-depth: 1
       - shell: bash
         env:
+          ID_RSA_BINUTILS: ${{ secrets.ID_RSA_BINUTILS }}
+          ID_RSA_EDK2: ${{ secrets.ID_RSA_EDK2 }}
+          ID_RSA_EFIBOOTMGR: ${{ secrets.ID_RSA_EFIBOOTMGR }}
+          ID_RSA_EFIVAR: ${{ secrets.ID_RSA_EFIVAR }}
+          ID_RSA_GCC: ${{ secrets.ID_RSA_GCC }}
+          ID_RSA_GNU_EFI: ${{ secrets.ID_RSA_GNU_EFI }}
+          ID_RSA_GRUB2: ${{ secrets.ID_RSA_GRUB2 }}
+          ID_RSA_GRUB2_FEDORA: ${{ secrets.ID_RSA_GRUB2_FEDORA }}
+          ID_RSA_LINUX: ${{ secrets.ID_RSA_LINUX }}
+          ID_RSA_PESIGN: ${{ secrets.ID_RSA_PESIGN }}
+          ID_RSA_RPM: ${{ secrets.ID_RSA_RPM }}
           ID_RSA_SHIM: ${{ secrets.ID_RSA_SHIM }}
         run: |
           ./mirror.sh

@@ -83,5 +83,17 @@ EOF
 umask 0077
 
 mirror-branch https://github.com/rhboot/shim vathpela mallory ID_RSA_SHIM main
+mirror-branch https://github.com/tianocore/edk2 vathpela edk2 ID_RSA_EDK2 master
+mirror-branch https://github.com/rhboot/efibootmgr vathpela efibootmgr-devel ID_RSA_EFIBOOTMGR master
+mirror-branch git://sourceware.org/git/binutils-gdb.git vathpela binutils ID_RSA_BINUTILS master
+mirror-branch https://github.com/tianocore/edk2 vathpela gcc ID_RSA_GCC master
+mirror-branch https://github.com/torvalds/linux vathpela linux ID_RSA_LINUX master
+mirror-branch git://git.code.sf.net/p/gnu-efi/code vathpela gnu-efi ID_RSA_GNU_EFI master
+mirror-branch https://github.com/rpm-software-management/rpm vathpela rpm ID_RSA_RPM master
+mirror-branch https://github.com/rhboot/efivar vathpela efivar ID_RSA_EFIVAR master
+mirror-branch git://git.savannah.gnu.org/grub.git rhboot grub2 ID_RSA_GRUB2 master
+mirror-branch https://github.com/rhboot/grub2 vathpela grub2-fedora ID_RSA_GRUB2_FEDORA \
+    fedora-{32..99} rhel-{7..9}-{0..9} master
+mirror-branch https://github.com/rhboot/pesign vathpela pesign ID_RSA_PESIGN main
 
 # vim:fenc=utf-8:tw=140
