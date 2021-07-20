@@ -1,0 +1,4 @@
+*.sw?
+*~
+mirror-to-github
+mirror-to-github.pub

@@ -1,0 +1,24 @@
+name: mirror-to-github
+
+on:
+  schedule:
+    - cron: '43 */2 * * *'
+  workflow_dispatch:
+    branches:
+      - main
+
+jobs:
+  mirror-main:
+    runs-on: ubuntu-latest
+    name: mirror-main
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: refs/heads/main
+          fetch-depth: 1
+      - shell: bash
+        env:
+          MIRROR_TO_GITHUB: ${{ secrets.MIRROR_TO_GITHUB }}
+        run: |
+          ./mirror.sh
