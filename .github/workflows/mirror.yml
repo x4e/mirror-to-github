@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - remote: https://git.sr.ht/~x4e/javaception
+          - remote: "https://git.sr.ht/~x4e/javaception"
             user: x4e
             repo: javaception
             secret: ID_RSA_CEPTION

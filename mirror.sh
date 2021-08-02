@@ -26,6 +26,10 @@ mirror-branch()
     echo "mirroring ${a_url}"
 
     local a_remote="${a_url}"
+    
+    # remove ~ from remote
+    a_remote=$(echo "$a_remote" | sed "s/~//g")
+    
     while [[ ${a_remote} =~ .*[][!@#$%^\&*()_=+{}\;:\'\"\<,\>\.\/\?].* ]] ; do
         for x in ~ \\\` \\\! @ \\\# \\\$ % ^ \\\& \\\* \\\( \\\) _ = + \
                  \\\[ \\\] \\\{ \\\} \
